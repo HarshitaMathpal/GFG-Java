@@ -1,0 +1,23 @@
+Given an array arr[] of size N where every element is in the range from 0 to n-1. Rearrange the given array so that arr[i] becomes arr[arr[i]].
+
+
+class Solution
+{
+ 
+    // arr: input array
+    // n: size of array
+    //Function to rearrange an array so that arr[i] becomes arr[arr[i]]
+    //with O(1) extra space.
+    static void arrange(long arr[], int n)
+    {
+        // your code here
+        long temp[]= new long[n];
+        for(int j=0;j<n;j++){
+            temp[j]=arr[(int)arr[j]];
+            
+        }
+        for(int i=0;i<n;i++){
+            arr[i]=temp[i];
+        }
+    }
+}
