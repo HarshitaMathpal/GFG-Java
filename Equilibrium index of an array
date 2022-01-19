@@ -1,0 +1,38 @@
+Equilibrium index of an array is an index such that the sum of elements at lower indexes is equal to the sum of elements at higher indexes.
+Given an array, your task is to find the index of first Equilibrium point in the array.
+
+Input Format:
+The first line of input takes an integer T denoting the no of test cases, then T test cases follow. The first line of each test case is an integer N denoting The size of the array. Then in the next line are N space-separated values of the array. 
+
+Output Format:
+For each test case, the output will be the equilibrium index of the array. If no such index exists output will be -1.
+
+
+
+
+
+class GfG
+{
+           public static int findEquilibrium(int arr[], int n)
+              {
+                  int rsum;
+                  int lsum;
+                  int i,j;
+                  for(i =0;i<n;i++){
+                      lsum=0;
+                  
+                  for(j=0;j<i;j++){
+                        lsum +=arr[j];
+                    }
+                         rsum =0;   
+                    for(j=i+1;j<n;j++){
+                        rsum +=arr[j];
+                        }
+                        if(lsum == rsum){
+                            return i;
+                        }
+                        
+                }
+                return -1;
+              }
+}
