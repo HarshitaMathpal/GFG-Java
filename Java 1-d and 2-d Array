@@ -1,0 +1,26 @@
+This is a function problem. The input is already taken care of by the driver code. You only need to complete the function array() that takes a two-dimension array 
+(a), another one dimension array (b), sizeOfArray (n),and return the ArrayList which is having the sum of the diagonal elements of the array a and the maximum number
+of the array b. The driver code takes care of the printing.
+
+
+class Complete
+{
+    public static ArrayList<Integer> array(int a[][], int b[], int n)
+    {
+        // Complete the function
+        ArrayList <Integer> l = new ArrayList<>();
+        int sum =0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(i ==j){
+                    sum += a[i][j];
+                }
+            }
+        }
+        l.add(sum);
+        Arrays.sort(b);
+        l.add(b[n-1]);
+        return l;
+        
+    }
+}
