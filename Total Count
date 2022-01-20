@@ -1,0 +1,24 @@
+Given an array Arr of N positive integers and a number K where K is used as a threshold value to divide each element of the array into sum of different numbers. 
+Find the sum of count of the numbers in which array elements are divided.
+
+
+class Solution {
+    int totalCount(int[] arr, int n, int k) {
+        // code here
+        int count=0,totalcount=0;
+        for(int i=0;i<n;i++){
+            int sum =0;
+            if(arr[i]%k!=0){
+                sum = arr[i]-arr[i]%k;
+                count = arr[i]/k +1 ;
+            }
+            else{
+                sum = arr[i];
+                count =arr[i]/k;
+            }
+            totalcount += count;
+        }
+        return totalcount;
+        
+    }
+}
