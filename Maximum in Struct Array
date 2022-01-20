@@ -1,0 +1,19 @@
+Given a struct array of type Height, having two elements feet and inches. 
+Find the maximum height among n heights, where height is calculated sum of feet and inches after converting feet into inches.
+
+class GfG
+{
+    public static int findMax(Height arr[], int n)
+    {
+       // your code here
+       int inch =12;
+       int max=arr[0].feet*inch+arr[0].inches;
+       for(int i=0;i<n;i++){
+           if((arr[i].feet*inch+arr[i].inches)>max){
+               max = arr[i].feet*inch+arr[i].inches;
+           }
+       }
+       return max;
+    }
+    
+}
