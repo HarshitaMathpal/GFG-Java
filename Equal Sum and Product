@@ -1,0 +1,25 @@
+Given an array Arr of length N, return the count of number of contiguous subarrays for which the sum and product of elements are equal.
+
+class Solution {
+    int numOfsubarrays(int[] arr, int n) {
+        // code here
+        int count =0;
+        for(int i=0;i<n;i++){
+            int sum= arr[i];
+            int pro = arr[i];
+            if(sum==pro){
+                count++;
+            }
+            int j=i+1;
+            while(j<n){
+                sum+=arr[j];
+                pro *= arr[j];
+                if(sum == pro) 
+                count++;
+                j++;
+            }
+            }
+        
+        return count;
+    }
+}
