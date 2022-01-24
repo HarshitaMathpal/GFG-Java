@@ -1,0 +1,26 @@
+Given an array of n integers and q queries. Write a program to find floor value of mean in range l to r for each query in a new line.
+
+
+class Solution{
+    
+    public ArrayList<Integer> findMean(int arr[],int queries[],int n,int q){
+        
+        // Complete the function
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i=0;i<q-1;i=i+2){
+            int sum=0,count=0;
+            int l=queries[i];
+            int r=queries[i+1];
+            for(int j=l;j<=r;j++){
+                sum+=arr[j];
+                count++;
+            }
+            sum= sum/count;
+            list.add(sum);
+        }
+        
+        return list;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    
+    }    
+    
+}
