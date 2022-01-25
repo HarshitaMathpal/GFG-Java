@@ -1,0 +1,16 @@
+Given a number N, write a program to find a maximum number that can be formed using all of the digits of this number.
+Note: The given number can be very large, so the input is taken as a String.
+
+class Solution {
+    static String findMax(String N) {
+        // code here
+        char[] arr = N.toCharArray();
+        Arrays.sort(arr);
+        String ans =String.valueOf(arr);
+        String rev ="";
+        for(int i=0;i<ans.length();i++){
+            rev=ans.charAt(i)+rev;
+        }
+        return rev;
+    }
+};
