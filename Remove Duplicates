@@ -1,0 +1,17 @@
+Given a string without spaces, the task is to remove duplicates from it.
+
+Note: The original order of characters must be kept the same. 
+
+class Solution {
+    String removeDups(String S) {
+        // code here
+        ArrayList<String> str = new ArrayList<>();
+        for(int i=0;i<S.length();i++){
+            if(!str.contains(Character.toString(S.charAt(i)))){
+                str.add(Character.toString(S.charAt(i)));
+            }
+        }
+        String ans=str.toString().substring(1,3*str.size()-1).replaceAll(", ","");
+        return ans;
+    }
+}
