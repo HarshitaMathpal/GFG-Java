@@ -1,0 +1,29 @@
+Amicable numbers are two different numbers so related that the sum of the proper divisors of each is equal to the other number. (A proper divisor of a number is a positive factor of that number other than the number itself. Given two Numbers A and B, find whether they are Amicable Numbers or not. Print 1 if they are Amicable else 0.
+
+
+class Solution {
+    static int isAmicable(int A , int B) {
+        // code here
+        int x=A/2;
+        int sumx =0;
+        int sumy =0;
+        int y=B/2;
+        while(x>0){
+            if(A%x==0){
+                sumx+=x;
+            }
+            x--;
+        }
+        while(y>0){
+            if(B%y==0){
+                sumy+=y;
+            }
+            y--;
+        }
+        if(sumx==B && sumy==A){
+            return 1;
+        }
+        else
+            return 0;
+    }
+};
