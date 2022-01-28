@@ -1,0 +1,23 @@
+Given a binary string S. The task is to count the number of substrings that starts and end with 1.
+Note: The starting and the ending 1s should be different.
+
+class Solution
+{
+    int countSubstr (String S)
+    {
+        // your code here
+        int count=0;
+        for(int i=0;i<S.length();i++){
+            if(S.charAt(i)=='1'){
+                count++;
+            }
+        }
+            if(count>2){
+                return (count*(count-1))/2;
+            }
+            else if(count==2)
+            return 1;
+            else
+            return 0;
+        }
+    }
