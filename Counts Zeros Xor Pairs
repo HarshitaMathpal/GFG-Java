@@ -1,0 +1,22 @@
+Given an array A[] of size N. Find the number of pairs (i, j) such that
+Ai XOR Aj = 0, and 1 ≤ i < j ≤ N.
+
+class Complete{
+    
+   
+    // Function for finding maximum and value pair
+    public static long calculate (int arr[], int n) {
+        //Complete the function
+        int count=0;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                if((arr[i] ^ arr[j])==0){
+                    count ++;
+                }
+            }
+        }
+        return count;
+    }
+    
+    
+}
