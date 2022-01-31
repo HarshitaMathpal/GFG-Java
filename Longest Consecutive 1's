@@ -1,0 +1,28 @@
+Given a number N. Find the length of the longest consecutive 1s in its binary representation.
+
+class Solution{
+    
+    /*  Function to calculate the longest consecutive ones
+    *   N: given input to calculate the longest consecutive ones
+    */
+    public static int maxConsecutiveOnes(int N) {
+        
+        // Your code here
+        int count =0;
+        int maxc =0;
+        String s = Integer.toBinaryString(N);
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='1'){
+                count++;
+                if (count>maxc){
+                    maxc = count;
+                }
+            }
+            else {
+                count =0;
+            }
+        }
+        return maxc;
+        
+    }
+}
