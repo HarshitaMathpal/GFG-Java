@@ -1,0 +1,15 @@
+Given a positive integer N, print count of set bits in it. 
+
+class Solution {
+    static int setBits(int N) {
+        // code here
+        int sum =0;
+        while(N>1){
+            int r = N%2;
+            sum =sum +r;
+            N=N/2;
+        }
+        int a = sum+N;
+        return a;
+    }
+}
