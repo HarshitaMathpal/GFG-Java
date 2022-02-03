@@ -1,0 +1,20 @@
+class Solution
+{
+        
+    long power(int N,int R)
+    {
+        //Your code here
+        return pow(N,R)%1000000007;
+    }
+    long pow(int N ,int R){
+        if(R==0){
+            return 1;
+        }
+        long res = power(N,R/2);
+        res = (res*res)%1000000007;
+        if(R%2 == 0)
+            return res;
+        else
+            return res*N;
+    }
+}
