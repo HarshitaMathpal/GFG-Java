@@ -1,0 +1,21 @@
+class Solution {
+    public List<String> find_permutation(String S) {
+        // Code here
+        List<String> list = new ArrayList<>();
+        stringPerm(S,"",list);
+        Collections.sort(list);
+        return list;
+        
+    }
+    public void stringPerm(String s ,String perm,List<String> ans){
+        if(s.length()==0){
+            ans.add(perm);
+            return ;
+        }
+        for(int i=0;i<s.length();i++){
+            char ch = s.charAt(i);
+            String newstr = s.substring(0,i)+s.substring(i+1);
+            stringPerm(newstr,perm+ch,ans);
+        }
+    }
+}
