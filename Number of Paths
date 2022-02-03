@@ -1,0 +1,16 @@
+class Solution{
+    
+    long numberOfPaths(int m, int n) {
+        // Code Here
+        long ans= countPaths(m,n,0,0);
+        return ans;
+    }
+    int count=0;
+    public int countPaths(int m , int n ,int i,int j){
+        if(i==m-1|| j==n-1){
+            return 1;
+        }
+        count = countPaths(m,n,i+1,j) + countPaths(m,n,i,j+1);
+        return count;
+    }
+}
