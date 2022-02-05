@@ -1,0 +1,21 @@
+class Solution {
+    
+    public Node insertInMid(Node head, int data){
+        //Insert code here, return the head of modified linked list
+        Node temp=head;
+        float c=0;
+        while(temp!=null){
+            c++;
+            temp=temp.next;
+        }
+        temp=head;
+        int mid=(int)Math.ceil(c/2);
+        for(int i=0;i<mid-1;i++){
+            temp=temp.next;
+        }
+        Node newnode = new Node(data);
+        newnode.next=temp.next;
+        temp.next=newnode;
+        return head;
+    }
+}
