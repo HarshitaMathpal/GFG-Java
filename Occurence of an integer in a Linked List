@@ -1,0 +1,19 @@
+class Solution
+{
+    public static int count(Node head, int search_for)
+    {
+        //code here
+        if(head==null){
+            return 0;
+        }
+        int count=0;
+        Node temp=head;
+        while(temp!=null){
+            if(temp.data==search_for){
+                count++;
+            }
+            temp=temp.next;
+        }
+        return count;
+    }
+}
