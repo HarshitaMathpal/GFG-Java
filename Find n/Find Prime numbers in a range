@@ -1,0 +1,29 @@
+class Solution {
+    ArrayList<Integer> primeRange(int M, int N) {
+        // code here
+        ArrayList<Integer> list=new ArrayList<>();
+        while(M<=N){
+           if(isPrime(M)) list.add(M);
+           M++;
+       }
+       
+       
+        return list;
+    }
+        public boolean isPrime(int M){
+           
+            if(M<=1){
+                return false;
+            }
+            else if(M==2)
+            return true;
+            else if(M%2==0){
+                return false;
+            }
+            for(int i=3;i*i<=M;i = i+2){
+            if(M%i==0) return false;
+       }
+       
+       return true;
+        }
+    }
