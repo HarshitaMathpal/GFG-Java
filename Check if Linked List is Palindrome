@@ -1,0 +1,43 @@
+class Solution
+{
+    //Function to check whether the list is palindrome.
+       public Node reverse(Node head){
+        Node prev=null;
+        Node curr=head;
+        while(curr!=null){
+            Node newNode = curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr = newNode;
+        }
+        return prev;
+    }
+      public Node findMid(Node head){
+        Node rabbit = head;
+        Node turtle = head;
+        while(rabbit.next!=null && rabbit.next.next !=null){
+            rabbit=rabbit.next.next;
+            turtle=turtle.next;
+        }
+        return turtle;
+    }
+    boolean isPalindrome(Node head) 
+    {
+        if(head==null || head.next==null){
+            return true;
+        } 
+        Node mid=findMid(head);
+        Node midnext=reverse(mid.next);
+        Node first = head;
+        while(midnext!=null){
+            if(first.data!=midnext.data){
+                return false;
+            }
+            midnext=midnext.next;
+            first=first.next;
+        }
+        return true;
+    } 
+  
+ 
+}
