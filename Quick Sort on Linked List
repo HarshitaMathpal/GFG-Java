@@ -1,0 +1,29 @@
+class GfG
+{
+    public static Node quickSort(Node node)
+    {
+    
+        Node dummy2=node;
+        Node ans=node;
+     
+       ArrayList<Integer> al = new ArrayList<>();
+       while(dummy2!=null)
+       {
+           al.add(dummy2.data);
+           dummy2=dummy2.next;
+       }
+       
+       Collections.sort(al);
+       int j=0;
+       while(ans!=null)
+       {
+           ans.data=al.get(j);
+           j++;
+           ans=ans.next;
+       }
+       
+       return node;
+   
+        
+    }
+}
