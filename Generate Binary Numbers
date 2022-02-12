@@ -1,0 +1,19 @@
+class solve{
+    
+    //Function to generate binary numbers from 1 to N using a queue.
+    static ArrayList<String> generate(int N)
+    {
+        // Your code here
+        ArrayList<String> al = new ArrayList<>();
+        Queue<String> q= new LinkedList<String>();
+        for(int i=1;i<=N;i++){
+            q.add(Integer.toBinaryString(i));
+        }
+        while(!q.isEmpty()){
+            al.add(q.peek());
+                q.remove();
+            }
+            return al;
+        }
+        
+    }
