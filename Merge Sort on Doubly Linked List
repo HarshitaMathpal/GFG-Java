@@ -1,0 +1,32 @@
+class LinkedList
+{
+    //Function to sort the given doubly linked list using Merge Sort.
+    static Node sortDoubly(Node head)
+    {
+        // add your code here
+        Node dummy=head;
+        Node ans1=head;
+        Node ans2=head;
+        ArrayList<Integer> al = new ArrayList<>();
+        while(dummy!=null){
+            al.add(dummy.data);
+            dummy=dummy.next;
+        }
+        Collections.sort(al);
+        int k=al.size()-1;
+        while(ans2!=null){
+            ans2.data=al.get(k);
+            k--;
+            ans2=ans2.next;
+        }
+        int i=0;
+        while(ans1!=null){
+            ans1.data=al.get(i);
+            ans1=ans1.next;
+            i++;
+        }
+        
+        return head;
+        
+    }
+}
