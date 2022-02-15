@@ -1,0 +1,31 @@
+class GFG
+{
+    static Node construct(int arr[][],int n)
+    {
+        //Add your code here.
+        Node head = new Node(arr[0][0]);
+        Node temp=head;
+        for(int i=0;i<n;i++){
+            Node t=temp;
+            for(int j=0;j<n;j++){
+                if(j+1==n){
+                    temp.right=null;
+                }
+                else
+                temp.right = new Node(arr[i][j+1]);
+                
+            
+            if(i+1==n){
+                temp.down=null;
+            }
+            else
+            temp.down =new Node(arr[i+1][j]) ;
+            temp=temp.right;
+            }
+            temp=t;
+            temp=temp.down;
+        }
+        return head;
+    }
+    
+}
