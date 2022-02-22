@@ -1,0 +1,37 @@
+class Solution
+{
+    public static Node addPolynomial(Node p1,Node p2)
+    {
+        //Add your code here.
+        Node n1 = p1;
+        Node n2 = p2;
+        Node temp = new Node(0,0);
+        Node n3=temp;
+        while(n1!= null || n2!=null){
+            if(n1==null){
+            n3.next=n2;
+            break;
+            }
+            else if (n2==null){
+            n3.next=n1;
+            break;
+            }
+        
+        if(n1.pow ==n2.pow){
+            n3.next=new Node(n1.coeff + n2.coeff,n1.pow);
+            n1=n1.next;
+            n2=n2.next;
+        }
+        else if(n1.pow>n2.pow){
+            n3.next=new Node(n1.coeff,n1.pow);
+            n1 = n1.next;
+        }
+        else if(n1.pow<n2.pow){
+            n3.next=new Node(n2.coeff,n2.pow);
+            n2 = n2.next;
+        }
+        n3=n3.next;
+        }
+        return temp.next;
+    }
+}
