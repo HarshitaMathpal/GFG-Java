@@ -1,0 +1,21 @@
+class Solution
+{
+    long sumOfDistinct(long arr[], int N)
+    {
+        Arrays.sort(arr);
+        long sum=0;
+        long x=arr[0];
+        sum=x;
+        if(arr[0]==arr[N-1]){
+            return arr[0];
+        }
+        for(int i=1;i<N;i++){
+            if(arr[i]!=x){
+            sum+=arr[i];
+            x=arr[i];
+            }
+        }
+        return sum;
+            }
+        }
+
