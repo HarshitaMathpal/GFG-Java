@@ -1,0 +1,26 @@
+class Solution
+{
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        // code here 
+        Set<Integer> a = new HashSet<>();
+        HashSet<Integer> a1= new HashSet<>();
+        HashSet<Integer> a2 = new HashSet<>();
+        for(int i=0;i<n1;i++){
+            a.add(A[i]);
+        }
+        for(int i=0;i<n2;i++){
+            if(a.contains(B[i])){
+                a1.add(B[i]);
+            }
+        }
+        for(int i=0;i<n3;i++){
+            if(a1.contains(C[i])){
+                a2.add(C[i]);
+            }
+        }
+        ArrayList<Integer>ans=new ArrayList<>(a2);
+        Collections.sort(ans);
+        return ans;
+    }
+}
