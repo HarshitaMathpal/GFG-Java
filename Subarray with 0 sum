@@ -1,0 +1,20 @@
+class Solution{
+    //Function to check whether there is a subarray present with 0-sum or not.
+    static boolean findsum(int arr[],int n)
+    {
+        //Your code here
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        int presum=0;
+        hm.put(presum,1);
+        for(int i=0;i<n;i++){
+            presum+=arr[i];
+            if(hm.containsKey(presum)){
+                return true;
+            }
+            else{
+                hm.put(presum,1);
+            }
+        }
+        return false;
+    }
+}
