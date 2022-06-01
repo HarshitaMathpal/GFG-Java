@@ -1,0 +1,44 @@
+class Solution
+{
+    //Function to sort a linked list of 0s, 1s and 2s.
+    static Node segregate(Node head)
+    {
+        // add your code here
+    //    ArrayList<Integer> al = new ArrayList<>();
+    int z=0,one=0,two=0;
+        Node temp=head;
+        while(temp!=null){
+            if(temp.data==0){
+                z++;
+            }
+            else if(temp.data==1){
+                one++;
+            }
+            else if(temp.data==2){
+                two++;
+            }
+            temp=temp.next;
+        }
+        temp=head;
+        while(temp!=null){
+            if(z!=0){
+                temp.data=0;
+             //   temp=temp.next;
+                z--;
+            }
+            else if(one!=0){
+                temp.data=1;
+            //    temp=temp.next;
+                one--;
+            }
+            else if(two!=0){
+                temp.data=2;
+              //  temp=temp.next;
+                two--;
+            }
+            temp=temp.next;
+        }
+        return head;
+        
+    }
+}
