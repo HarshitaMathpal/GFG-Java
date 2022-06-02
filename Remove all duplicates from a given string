@@ -1,0 +1,13 @@
+class Solution {
+    String removeDuplicates(String str) {
+        // code here
+        String ans="";
+        for(int i=0;i<str.length();i++){
+            if(!ans.contains(str.charAt(i)+"")){
+                ans+=str.charAt(i);
+            }
+        }
+        return ans;
+    }
+}
+
