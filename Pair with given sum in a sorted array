@@ -1,0 +1,39 @@
+class Solution{
+    
+  
+    int Countpair(int a[], int n, int sum)
+    {
+        // Complete the function
+        int c=0;
+        // int[] rem=new int[sum];
+        // for(int i=0;i<n;i++){
+        //     int x=((a[i]%sum)+sum)%sum;
+        //     rem[x]+=1;
+        // }
+        // for(int i=0;i<=sum/2;i++){
+        //     if(i==0){
+        //         if(rem[0]%2==0)
+        //         c++;
+        //     }
+        //     else{
+        //         int y=sum-i;
+        //         if(rem[i]==rem[y])
+        //         c++;
+        //         }
+        // }
+        // return c;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                if(a[i]+a[j]==sum){
+                    c++;
+                }
+            }
+        }
+        if(c!=0){
+            return c;
+        }else{
+            return -1;
+        }
+    }
+    
+}
