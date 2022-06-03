@@ -1,0 +1,26 @@
+class GFG
+{
+    ArrayList<Long> find(long arr[], int n, int x)
+    {
+        // code here
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        ArrayList<Long> al = new ArrayList<>();
+        long first=-1,last=-1;
+        for(int i=0;i<n;i++){
+            if(arr[i]==x){
+                if(hm.containsKey(x)){
+                    hm.put(x,i);
+                    last=i;
+                }
+                else{
+                    hm.put(x,i);
+                    first=i;
+                    last=first;
+                }
+            }
+        }
+        al.add(first);
+        al.add(last);
+        return al;
+    }
+}
