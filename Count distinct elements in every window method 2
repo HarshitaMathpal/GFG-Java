@@ -1,0 +1,46 @@
+class Solution
+{
+    ArrayList<Integer> countDistinct(int A[], int n, int k)
+    {
+        // code here 
+        ArrayList<Integer> al = new ArrayList<>();
+        Map<Integer,Integer> hm = new HashMap<>();
+        int distinctC=0;
+        for(int i=0;i<k;i++){
+            int curr=A[i];
+            if(hm.containsKey(curr)){
+                hm.put(curr,hm.get(curr)+1);
+            }
+            else{
+                hm.put(curr,1);
+                distinctC++;
+            }
+        }
+        al.add(distinctC);
+        int release =0;
+        for(int acquire =k;acquire<n;acquire++){
+            int elem=A[release];
+            hm.put(elem,hm.get(elem)-1);
+            release++;
+            
+            if(hm.get(elem)==0){
+                hm.remove(elem);
+                distinctC--;
+            }
+            
+            int val=A[acquire];
+            
+            if(hm.containsKey(val)){
+                hm.put(val,hm.get(val)+1);
+            }
+            else{
+                hm.put(val,1);
+                distinctC++;
+            }
+            
+            al.add(distinctC);
+        }
+        return al;
+    }
+}
+
