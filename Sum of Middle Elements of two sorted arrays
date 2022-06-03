@@ -1,0 +1,33 @@
+class Solution {
+    int findMidSum(int[] ar1, int[] ar2, int n) {
+        // code here
+        
+        int[] merge = new int[2*n];
+        int i=0;
+        int j=0;
+        int k=0;
+        while(j<n && k<n){
+            if(ar1[j]<ar2[k]){
+                merge[i]=ar1[j];
+                j++;
+                i++;
+            }
+            else{
+                merge[i]=ar2[k];
+                k++;
+                i++;
+            }
+        }
+        while(j<n){ 
+            merge[i]=ar1[j];
+            i++;
+            j++;
+        }
+        while(k<n){ 
+            merge[i]= ar2[k];
+            i++;
+            k++;
+        }
+        return merge[2*n/2]+merge[(2*n/2)-1];
+    }
+}
