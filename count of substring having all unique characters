@@ -1,0 +1,31 @@
+/*package whatever //do not write package name here */
+import java.util.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+	    String s=sc.next();
+	    System.out.println(solution(s));
+	}
+	public static int solution(String s){
+	    int release =0;
+	    int ans=0;
+	    HashMap<Character,Integer> hm = new HashMap<>();
+	    
+	    for(int acquire=0;acquire<s.length();acquire++){
+	        char currchar=s.charAt(acquire);
+	        
+	        while(release<acquire && hm.containsKey(currchar)){
+	            Character discard=s.charAt(release);
+	            hm.remove(discard);
+	            release+=1;
+	        }
+	        
+	        hm.put(currchar,1);
+	        ans+=acquire-release+1;
+	    }
+	    return ans;
+	}
+	
+}
