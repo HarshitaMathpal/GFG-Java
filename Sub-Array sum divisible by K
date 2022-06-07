@@ -1,0 +1,32 @@
+class Solution
+{
+    long subCount(long a[] ,int n,int k)
+    {
+        
+        int sum=0;
+        
+        long ans=0;
+        
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        
+        hm.put(sum,1);
+        
+        for(long i:a){
+            
+            sum+=i;
+            
+            int mod=((sum%k)+k)%k;
+            
+            if(hm.containsKey(mod)){
+                ans+=hm.get(mod);
+                hm.put(mod,hm.get(mod)+1);
+            }
+            else{
+                hm.put(mod,1);
+            }
+        }
+        
+        return ans;
+        
+    }
+}
