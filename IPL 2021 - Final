@@ -1,0 +1,22 @@
+class Solution {
+    static int findMaxLen(String S) {
+        // code here
+        Stack<Integer> s=new Stack<>();
+        int len=0;
+        s.push(-1);
+        for(int i=0;i<S.length();i++){
+            
+            if(S.charAt(i)=='('){
+                s.push(i);
+            }
+            else{
+                s.pop();
+                if(s.isEmpty())
+                s.push(i);
+                else
+                len=Math.max(len,i-s.peek());
+            }
+        }
+        return len;
+    }
+};
