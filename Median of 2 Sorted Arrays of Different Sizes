@@ -1,0 +1,21 @@
+class GFG 
+{ 
+    static double medianOfArrays(int n, int m, int a[], int b[]) 
+    {
+        // Your Code Here
+        int[] merge = new int[n+m];
+        System.arraycopy(a,0,merge,0,n);
+        System.arraycopy(b,0,merge,n,m);
+        
+        Arrays.sort(merge);
+        
+        int len=n+m;
+        
+        if(len%2==0){
+            return (double)(merge[(len/2)-1] +merge[len/2])/2;    
+        }
+        else{
+            return merge[len/2];
+        }
+    }
+}
