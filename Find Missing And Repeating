@@ -1,0 +1,23 @@
+class Solve {
+    int[] findTwoElement(int arr[], int n) {
+        
+        int repeat=0,miss=0;
+        
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        for(int i=0;i<n;i++){
+            hm.put(arr[i],hm.getOrDefault(arr[i],0)+1);
+            
+            if(hm.get(arr[i])==2)
+            repeat=arr[i];
+        }
+        
+        for(int i=1;i<=n;i++){
+            if(!hm.containsKey(i)){
+                miss=i;
+                break;
+            }
+        }
+        
+        return new int[] {repeat,miss};
+    }
+}
