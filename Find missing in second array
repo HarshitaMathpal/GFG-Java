@@ -1,0 +1,20 @@
+class Solution
+{
+    ArrayList<Long> findMissing(long A[], long B[], int N, int M)
+    {
+        ArrayList<Long> al = new ArrayList<>();
+        HashMap<Long,Long> hm = new HashMap<>();
+        
+        for(int i=0;i<M;i++){
+            
+            hm.put(B[i],(long)1);
+        }
+        
+        for(int i=0;i<N;i++){
+            if(!hm.containsKey(A[i]))
+            al.add(A[i]);
+        }
+        return al;
+        
+    }
+}
