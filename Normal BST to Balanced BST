@@ -1,0 +1,41 @@
+class GfG
+{
+    Node buildBalancedTree(Node root) 
+    {
+        //Add your code here.
+        List<Integer> al = inorderTraversal(root);
+        
+        Node ans=add(al,0,al.size()-1);
+        return ans;
+        
+    }
+    List<Integer> result;
+    public List<Integer> inorderTraversal(Node root) {
+         result = new ArrayList<>();
+        
+        traversal(root);
+        
+        return result;
+    }
+    
+    public void traversal(Node node) {
+        if(node == null)
+            return;
+        
+        traversal(node.left);
+        result.add(node.data);
+        traversal(node.right);  
+    }
+    
+    public Node add(List<Integer> al,int i,int j){
+       if(i>j)
+       return null;
+       int mid;
+       mid=(i+j)/2;
+       Node node = new Node(al.get(mid));
+       node.left= add(al,i,mid-1);
+       node.right=add(al,mid+1,j);
+       return node;
+   }
+    
+}
