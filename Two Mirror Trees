@@ -1,0 +1,17 @@
+class Solution {
+    boolean areMirror(Node a, Node b) {
+        // Your code here
+        if(a==null && b==null)
+        return true;
+        
+        if(a!=null && b!=null && a.data==b.data){
+            boolean anode=areMirror(a.left,b.right);
+            boolean bnode=areMirror(a.right,b.left);
+            
+            return anode && bnode;
+        }
+        else
+        return false;
+        
+    }
+}
