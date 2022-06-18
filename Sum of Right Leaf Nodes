@@ -1,0 +1,22 @@
+class Solution
+{
+
+    int rightLeafSum(Node root)
+    {
+        // code here
+        return getsum(root,false);
+    }
+    
+    static int getsum(Node root,boolean rightleaf){
+        if(root==null)
+        return 0;
+        
+        if(root.left==null && root.right==null)
+        return rightleaf?root.data:0 ;
+        
+        int leftsum=getsum(root.left,false);
+        int rightsum=getsum(root.right,true);
+        
+        return leftsum+rightsum;
+    }
+}
