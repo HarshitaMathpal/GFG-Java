@@ -1,0 +1,20 @@
+class Solution
+   {
+         public Node deleteNode(Node root,int k)
+         {
+         //add code here.
+         if(root==null)
+         return root;
+         if(root.data>k || root.data==k){
+             Node leftnode = deleteNode(root.left,k);
+             return leftnode;
+         }
+         else if(root.data<k){
+             root.right=deleteNode(root.right,k);
+             return root;
+         }
+         
+         return root;
+         }
+   }
+    
