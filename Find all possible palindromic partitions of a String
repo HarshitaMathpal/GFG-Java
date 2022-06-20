@@ -1,0 +1,41 @@
+class Solution {
+    static ArrayList<ArrayList<String>> allPalindromicPerms(String s) {
+        // code here
+        ArrayList<ArrayList<String>> ans = new ArrayList<>();
+        generatecombo(s,0,s.length()-1,new ArrayList<>(),ans);
+        
+        return ans;
+    }
+    static void generatecombo(String s, int start, int end,ArrayList<String> curr,ArrayList<ArrayList<String>> ans){
+        
+        if(start>end){
+            ans.add(new ArrayList<String>(curr));
+            return;
+        }
+        
+        for(int i=start; i<=end;i++){
+            String leftpart = s.substring(start,i+1);
+            
+            if(ispalindrome(leftpart)){
+                curr.add(leftpart);
+                generatecombo(s,i+1,end,curr,ans);
+                curr.remove(curr.size()-1);
+            }
+        }
+        
+        return;
+    }
+    
+    static boolean ispalindrome(String s){
+        int l=0;
+        int r=s.length()-1;
+        while(l<=r){
+            if(s.charAt(l)!=s.charAt(r))
+                return false;
+            l++;
+            r--;
+        }
+        return true;
+    }
+    
+};
