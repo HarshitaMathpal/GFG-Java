@@ -1,0 +1,33 @@
+class Solution
+{
+    //Function to count number of ways to reach the nth stair.
+    int countWays(int n)
+    {
+        
+        // your code here
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        return findtotalways(0, n ,hm)%1000000007;
+    }
+    
+     private int findtotalways(int currentstair , int target , HashMap<Integer,Integer> hm ){
+        
+        if(currentstair==target){
+            return 1;
+        }
+        
+        if(currentstair>target)
+            return 0;
+        
+        int currkey = currentstair;
+        
+        if(hm.containsKey(currkey))
+            return hm.get(currkey);
+        
+        int onejump = findtotalways(currentstair+1,target,hm);
+        int twojumps = findtotalways(currentstair+2,target,hm);
+        
+        hm.put(currkey , (onejump+twojumps) %1000000007);
+        
+        return (onejump+twojumps) % 1000000007;
+    }
+}
