@@ -1,0 +1,27 @@
+class Solution
+{
+    //Function to find the maximum money the thief can get.
+    public int FindMaxSum(int arr[], int n)
+    {
+        // Your code here
+        return maxmoney(arr,0,new HashMap<Integer,Integer>());
+    }
+    
+    private int maxmoney(int[] nums , int currhouse , HashMap<Integer, Integer> hm ){
+        
+        if(currhouse>=nums.length)
+            return 0;
+        
+        int currkey=currhouse;
+        
+        if(hm.containsKey(currkey))
+            return hm.get(currkey);
+        
+        int rob = nums[currhouse]+ maxmoney(nums,currhouse+2,hm);
+        int norob = maxmoney(nums,currhouse+1,hm);
+        
+        hm.put(currkey,Math.max(rob,norob));
+        return hm.get(currkey);
+    
+    }
+}
