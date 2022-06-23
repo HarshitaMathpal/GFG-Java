@@ -1,0 +1,24 @@
+class Solution {
+    static int findTargetSumWays(int[] A , int N, int target) {
+        // code here
+         return totalways(A,0,target,new HashMap<String,Integer> ());
+    }
+    
+    static int totalways(int[] nums,int currindex, int target,HashMap<String,Integer> hm){
+        if(currindex==nums.length && target==0)
+            return 1;
+        if(currindex==nums.length && target!=0)
+            return 0;
+        
+        String currkey = currindex+"-"+target;
+        
+        if(hm.containsKey(currkey))
+            return hm.get(currkey);
+        
+        int consider = totalways(nums,currindex+1,target-nums[currindex],hm);
+        int notconsider = totalways(nums,currindex+1,target+nums[currindex],hm);
+        
+        hm.put(currkey,consider+ notconsider);
+        return hm.get(currkey);
+    }
+};
