@@ -1,0 +1,36 @@
+class Solution {
+    public long count(int S[], int m, int n) {
+        // code here.
+        long[][] dp = new long[m][n+1];
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n+1;j++)
+            dp[i][j]=-1;
+        }
+        return (long)findways(S,0,n,dp);
+    }
+    
+    private long findways(int[] coins,int currentcoin, int amount,long[][] dp){
+        if(amount==0)
+            return 1;
+        
+        if(currentcoin==coins.length)
+            return 0;
+        
+        int curramount=coins[currentcoin];
+        
+        if(dp[currentcoin][amount]!=-1)
+        return dp[currentcoin][amount];
+        
+        long consider=0;
+        if(amount>=coins[currentcoin]){
+            consider= findways(coins,currentcoin,amount-curramount,dp);
+        }
+        long nonconsider = findways(coins,currentcoin+1,amount,dp);
+        
+       // hm.put(currkey,consider+nonconsider);
+        dp[currentcoin][amount]=consider+nonconsider;
+        return consider+nonconsider;
+        
+    }
+}
