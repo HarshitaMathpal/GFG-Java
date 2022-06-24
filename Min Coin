@@ -1,0 +1,36 @@
+class Solution
+{
+    public int MinCoin(int[] nums, int amount)
+    {
+        // Code here
+         int ans= coinsnumber(nums,0,amount,new HashMap<String,Integer>());
+        if(ans == 100000){
+            return -1;
+        }
+        
+        return ans;
+    }
+    
+    private int coinsnumber(int[] coins,int coinindex,int amount,HashMap<String,Integer> hm){
+        if(coinindex>=coins.length)
+            return 100000;
+        
+        if(amount==0)
+            return 0;
+        
+        String currkey = coinindex+"-"+amount;
+        if(hm.containsKey(currkey)){
+            return hm.get(currkey);
+        }
+        
+        int consider=100000;
+        int curramount = coins[coinindex];
+        if(amount>=coins[coinindex]){
+            consider =1+ coinsnumber(coins,coinindex,amount-curramount,hm);
+        }
+        int nonconsider=coinsnumber(coins,coinindex+1,amount,hm);
+        
+        hm.put(currkey,Math.min(consider,nonconsider));
+        return hm.get(currkey);
+    }
+}
