@@ -1,0 +1,31 @@
+class Solution
+{
+    //Function to return the total number of possible unique BST.
+    static int numTrees(int N)
+    {
+        // Your code goes here
+        
+        long []dp=new long[N+1];
+        Arrays.fill(dp, 0);
+        
+        return (int)findways(N,dp);
+        
+    }
+    
+    static long findways(int n,long[] dp){
+        if(n==0 || n==1)
+        return 1;
+        
+        if(dp[n]!=0){
+            return dp[n];
+        }
+        
+        long ways=0;
+        int mod=1000000007;
+        for(int i=1;i<=n;i++){
+            ways =(ways+((findways(i-1,dp)%mod)*(findways(n-i,dp))%mod)%mod)%mod;
+        }
+        dp[n]=ways;
+        return dp[n];
+    }
+}
