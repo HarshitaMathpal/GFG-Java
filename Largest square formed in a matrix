@@ -1,0 +1,37 @@
+class Solution{
+    static int maxSquare(int m, int n, int matrix[][]){
+        // code here
+      
+        
+        int length = 0;
+        HashMap<String,Integer> hm = new HashMap<>();
+        for(int currRow=0;currRow<m;currRow++){
+            for(int currCol=0;currCol<n;currCol++){
+                
+                if(matrix[currRow][currCol]==1){
+                    int templength = maximumsize(matrix,currRow,currCol,m,n,hm);
+                    length = Math.max(length,templength);
+                }
+            }
+        }
+        return length;
+    }
+    
+    static int maximumsize(int[][] matrix, int currRow,int currCol, int m,int                                                     n,HashMap<String,Integer> hm){
+        if(currRow<0 || currCol<0 ||currCol>=n || currRow>=m || matrix[currRow][currCol]==0)
+            return 0;
+        
+        
+        String currkey=currRow+"-"+currCol;
+        
+        if(hm.containsKey(currkey))
+            return hm.get(currkey);
+        
+        int right = 1 + maximumsize(matrix, currRow,currCol+1,m,n,hm);
+        int down = 1 + maximumsize(matrix,currRow+1,currCol,m,n,hm);
+        int rightdiagnol = 1 + maximumsize(matrix,currRow+1,currCol+1,m,n,hm);
+        
+        hm.put(currkey,Math.min(right,Math.min(down,rightdiagnol)));
+        return hm.get(currkey);
+    }
+}
