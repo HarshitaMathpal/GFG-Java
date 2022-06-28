@@ -1,0 +1,34 @@
+class Solution{
+    static int maxGold(int n, int m, int M[][])
+    {
+        // code here
+        int ans=Integer.MIN_VALUE;
+        HashMap<String,Integer> hm = new HashMap<>();
+        for(int currRow=0;currRow<n;currRow++){
+            int tempamount=maxamount(currRow,0,n,m,M,hm);
+            ans=Math.max(tempamount,ans);
+        }
+        return ans;
+    }
+    
+    static int maxamount(int currRow, int currCol,int n,int m,int[][] M,HashMap<String,Integer>hm){
+        if(currRow<0 || currRow>=n || currCol>=m || currCol<0){
+            return 0;
+        }
+        
+        if(currCol==m-1 && currRow==n-1)
+        return M[currRow][currCol];
+        
+        String currkey = currRow +"-"+currCol;
+        
+        if(hm.containsKey(currkey))
+        return hm.get(currkey);
+        
+        int upright= M[currRow][currCol] + maxamount(currRow-1,currCol+1,n,m,M,hm);
+        int right = M[currRow][currCol] + maxamount(currRow,currCol+1,n,m,M,hm);
+        int downright = M[currRow][currCol] + maxamount(currRow+1,currCol+1,n,m,M,hm);
+        
+        hm.put(currkey,Math.max(upright,Math.max(right,downright)));
+        return hm.get(currkey);
+    }
+}
