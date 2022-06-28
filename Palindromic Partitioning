@@ -1,0 +1,46 @@
+class Solution{
+    static int palindromicPartition(String s)
+    {
+        // code here
+        return minimumcuts(s,0,s.length()-1,new HashMap<Integer,Integer>());
+    }
+    
+    static int minimumcuts(String s,int start,int end,HashMap<Integer,Integer> hm){
+        
+        if(isPalindrome(s,start,end)){
+            return 0;
+        }
+        
+        int currkey=start;
+        
+        if(hm.containsKey(currkey))
+            return hm.get(currkey);
+        
+        int ans=Integer.MAX_VALUE;
+        
+        for(int i=start;i<end;i++){
+            
+            if(isPalindrome(s,start,i)){
+                int tempans =1+ minimumcuts(s,i+1,end,hm);
+                ans = Math.min(ans,tempans);
+            }
+                
+        }
+        
+        hm.put(currkey, ans);
+        return ans;
+    }
+    
+    static boolean isPalindrome(String s,int start,int end){
+        
+        while(start<=end){
+            if(s.charAt(start)!=s.charAt(end))
+                return false;
+            
+            start++;
+            end--;
+        }
+        return true;
+ 
+    }
+}
