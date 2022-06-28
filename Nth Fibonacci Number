@@ -1,0 +1,22 @@
+class Solution {
+    static long nthFibonacci(long n){
+        // code here
+        return fibonacci(n,new HashMap<Long,Long>());
+    }
+    static long fibonacci(long n,HashMap<Long,Long> hm){
+        if(n==1){
+            return 1;
+        }
+        if(n==0){
+            return 0;
+        }
+        long currkey = n;
+        if(hm.containsKey(n)){
+            return hm.get(currkey);
+        }
+        long num = fibonacci(n-1,hm)+fibonacci(n-2,hm);
+        num = num%1000000007;
+        hm.put(currkey,num);
+        return num;
+    }
+}
