@@ -1,0 +1,29 @@
+class Solution {
+    static long noOfWays(int M , int N , int X) {
+        // code here
+        return ways(N,M,X,new HashMap<String,Long> ());
+    }
+    
+    static long ways(int n,int faces,int targetsum,HashMap<String,Long> hm){
+        if(targetsum==0 && n==0)
+            return 1;
+        
+        if(n==0 || targetsum<=0)
+            return 0;
+        
+        String currkey = n+"-"+targetsum;
+        
+        if(hm.containsKey(currkey))
+            return hm.get(currkey);
+        
+        long ways=0;
+        //int mod= 1000000007;
+        
+        for(int i=1;i<=faces;i++){
+            ways+= ways(n-1,faces,targetsum-i,hm);
+        }
+        
+        hm.put(currkey,ways);
+        return ways;
+    }
+};
