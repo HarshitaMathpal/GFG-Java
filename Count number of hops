@@ -1,0 +1,29 @@
+class Solution
+{
+    //Function to count the number of ways in which frog can reach the top.
+    static long countWays(int n)
+    {
+        // add your code here
+        return jumps(n,new HashMap<Integer,Long>());
+    }
+    static long jumps(int n,HashMap<Integer,Long> hm){
+        if(n<0){
+            return 0;
+        }
+        if(n==1|| n==0)
+        return 1;
+        
+        int mod = 1000000007;
+        int currkey=n;
+        if(hm.containsKey(n))
+        return hm.get(currkey);
+        
+        long onejump=jumps(n-1,hm)%mod;
+        long twojump = jumps(n-2,hm)%mod;
+        long threejump=jumps(n-3,hm)%mod;
+        
+        hm.put(currkey,(onejump+twojump+threejump)%mod);
+        return hm.get(currkey);
+    }
+    
+}
