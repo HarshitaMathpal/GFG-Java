@@ -1,0 +1,30 @@
+class Solution
+{
+    public int minOperation(int n)
+    {
+        //code here.
+        HashMap<Integer,Integer> hm = new HashMap<> ();
+        return minways(n,hm);
+    }
+    static int minways(int n,HashMap<Integer,Integer> hm){
+        if(n<=0)
+        return 0;
+        
+        
+        int currkey = n;
+        if(hm.containsKey(currkey))
+        return hm.get(currkey);
+        
+        int doublenum =Integer.MAX_VALUE;
+        int addone = Integer.MAX_VALUE;
+        if(n%2==0){
+            doublenum = 1+ minways(n/2,hm);
+        }
+        else{
+        addone = 1+ minways(n-1,hm);
+        }
+        
+        hm.put(currkey, Math.min(addone,doublenum));
+        return hm.get(currkey);
+    }
+}
