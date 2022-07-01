@@ -1,0 +1,38 @@
+class Solution
+{
+    public int closedIslands(int[][] grid, int N, int M)
+    {
+        // Code here
+        int m=grid.length;
+        int n= grid[0].length;
+        
+        int ans=0;
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]==1 && findislands(grid,i,j,m,n)){
+                   ans+=1;
+                }
+            }
+        }
+        
+        return ans;
+    }
+    
+    private boolean findislands(int[][] grid , int currrow, int currcol, int m , int n){
+        if(currrow<0 || currrow>=m || currcol<0 || currcol>=n)
+            return false;
+        
+        if(grid[currrow][currcol]==0)
+            return true;
+        
+        grid[currrow][currcol]=0;
+        
+        boolean up=findislands(grid,currrow-1,currcol,m,n);
+        boolean down=findislands(grid,currrow+1,currcol,m,n);
+        boolean left=findislands(grid,currrow,currcol-1,m,n);
+        boolean right = findislands(grid,currrow,currcol+1,m,n);
+        
+        return up && down && left && right;
+    }
+}
