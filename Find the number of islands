@@ -1,0 +1,40 @@
+class Solution {
+    // Function to find the number of islands.
+    public int numIslands(char[][] grid) {
+        // Code here
+        int m=grid.length;
+        int n= grid[0].length;
+        
+        int ans=0;
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]=='1'){
+                    findislands(grid,i,j,m,n);
+                    ans+=1;
+                }
+            }
+        }
+        
+        return ans;
+    }
+    
+    static void findislands(char[][] grid , int currrow, int currcol, int m , int n){
+        if(currrow<0 || currrow>=m || currcol<0 || currcol>=n || grid[currrow][currcol]=='0')
+            return ;
+        
+        grid[currrow][currcol]='0';
+        
+        findislands(grid,currrow-1,currcol,m,n);
+        findislands(grid,currrow+1,currcol,m,n);
+        findislands(grid,currrow,currcol-1,m,n);
+        findislands(grid,currrow,currcol+1,m,n);
+        findislands(grid,currrow+1,currcol+1,m,n);
+        findislands(grid,currrow-1,currcol-1,m,n);
+        findislands(grid,currrow-1,currcol+1,m,n);
+        findislands(grid,currrow+1,currcol-1,m,n);
+        
+        return;
+    
+    }
+}
