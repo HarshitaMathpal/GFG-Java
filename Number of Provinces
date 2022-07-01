@@ -1,0 +1,32 @@
+class Solution {
+    static int numProvinces(ArrayList<ArrayList<Integer>> graph, int V) {
+        // code here
+         int n= graph.size();
+        int ans =0;
+        
+        boolean[] visited = new boolean[n];
+        
+        for(int currcity =0; currcity<n ;currcity++){
+            if(visited[currcity]==false){
+                dfs(graph,currcity,n,visited);
+                ans+=1;
+            }
+        }
+        return ans;
+    }
+    
+    static void dfs(ArrayList<ArrayList<Integer>> graph, int currcity,int n,boolean[] visited){
+        if(visited[currcity])
+            return;
+        
+        visited[currcity]=true;
+        ArrayList<Integer> neighbour = graph.get(currcity);
+        
+        for(int i=0;i<n;i++){
+            if(neighbour.get(i)==1){
+                dfs(graph,i,n,visited);
+            }
+        }
+        return;
+    }
+};
