@@ -1,0 +1,25 @@
+class Solution
+{
+    public int[][] floodFill(int[][] grid, int sr, int sc, int color)
+    {
+        // Code here 
+        if(grid[sr][sc]==color)
+            return grid;
+        
+        dfs(grid,sr,sc,grid[sr][sc],color);
+        return grid;
+    }
+    
+    static void dfs(int[][] grid,int currRow,int currCol,int currColor,int color){
+        if(currRow<0 || currRow>=grid.length || currCol<0 || currCol>=grid[0].length || grid[currRow][currCol]!=currColor)
+            return;
+        
+        grid[currRow][currCol]=color;
+        
+        dfs(grid,currRow-1,currCol,currColor,color);
+        dfs(grid,currRow+1,currCol,currColor,color);
+        dfs(grid,currRow,currCol+1,currColor,color);
+        dfs(grid,currRow,currCol-1,currColor,color);
+        return;
+    }
+}
