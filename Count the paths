@@ -1,0 +1,41 @@
+class Solution
+{
+    public int possible_paths(int[][] edges, int n, int s, int d)
+    {
+        // Code here 
+        ArrayList<ArrayList<Integer>> graph = constructGraph(edges,n);
+        int[] ways = {0};
+        
+        findpaths(graph,n,-1,s,d,ways);
+        return ways[0];
+    }
+    
+    public void findpaths(ArrayList<ArrayList<Integer>> graph,int n, int parent, int s, int d,int[] ways){
+        if(s==d){
+        ways[0]+=1;
+        return;
+        }
+        
+        for(int currvertex : graph.get(s)){
+            findpaths(graph,n,s,currvertex,d,ways);
+        }
+        
+        return ;
+    }
+    
+    public ArrayList<ArrayList<Integer>> constructGraph(int[][] edges,int n){
+        
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for(int i=0;i<n;i++){
+            graph.add(new ArrayList<>());
+        }
+        
+        for(int[] edge : edges){
+            int a = edge[0];
+            int b = edge[1];
+            graph.get(a).add(b);
+        }
+        
+        return graph;
+    }
+}
