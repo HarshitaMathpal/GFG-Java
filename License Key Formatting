@@ -1,0 +1,15 @@
+class Solution{
+    static String ReFormatString(String S, int K){
+        String ans=S.toUpperCase();
+        ans=ans.replaceAll("-","");
+        String val="";
+        int mod=(ans.length())%K;
+        val=ans.substring(0,mod);
+        for(int i=mod;i<=ans.length()-K;i+=K){
+            if(i!=0)
+            val+="-";
+            val=val+ans.substring(i,i+K);
+        }
+        return val;
+    }
+}
