@@ -1,0 +1,33 @@
+class Solution
+{
+    public int NthTerm(int N)
+    {
+        // code here
+        if(isPrime(N))
+            return 0;
+        
+        int i = 1;
+		    while(true){
+		        if(isPrime(N-i) || isPrime(N+i)){
+		            return i;
+		        }
+		        i++;
+		    }
+    }
+    
+    static boolean isPrime(int n){
+        int c=0;
+        
+        if(n<2){
+	            return false;
+	        }
+        int k=2;
+        while(k <= Math.sqrt(n)){
+            if(n%k == 0){
+                return false; 
+            }
+            k++;
+        }
+        return true;
+    }
+}
